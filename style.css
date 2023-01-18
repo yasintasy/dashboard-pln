@@ -1,41 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
-body{
+* {
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
 }
-body{
-    background-color: #C0F5FF;
-}
-.date{
-    text-align: right;
-    margin-right: 20px;
-}
-.footer{
-    background-color: yellow;
-    margin-top: 80px;
-    padding-top: 15px;
-    padding-bottom: 3px;
-}
-h4{
-    background-color: #00AFF0; 
-    padding: 15px; 
-    border-radius: 15px;
-}
-.col-md-12{
-    background-color: #00AFF0; 
-    padding: 15px; 
-    border-radius: 15px;
-}
-.col-md-3{
-    background-color: white; 
-    padding: 10px; 
-    border-radius: 15px;
-}
-.col-md-9{
-    background-color: white; 
-    padding: 10px; 
-    border-radius: 15px; 
-    color: white;
-}
+
+@media only screen and (max-width: 768px) {
+    .img-fluid {
+        width: 150px;
+        height: 100px;
+    }
+    .header {
+        font-size: 17px;
+    }
+    .date {
+        font-size: 12px;
+    }
+    .left
+    .right {
+        height: 150px;
+    }
+    .text-left {
+        font-size: 10px;
+    }
+    .title {
+        font-size: 13px;
+    }
+    .ps-2 {
+        width: 20px; 
+        height: 20px;
+    }
+    .desc {
+        height: 90px;
+        font-size: 10px;
+    }
+    .text {
+        position: relative;
+        top: -20px;
+        margin-bottom: 1px;
+    }
+  }
+

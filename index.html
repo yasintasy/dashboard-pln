@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -15,106 +15,166 @@
     <div class="container">
         <div class="container-fluid">
             <!-- header -->
-            <nav class="navbar p-4" center>
+            <nav class="navbar p-4 center">
                 <div class="container-fluid justify-content-center">
-                    <img src="./images/logo-pln.png" alt="logo">
+                    <img src="./images/logo-pln.png" alt="logo" class="img-fluid">
+                </div>
+                <div class="container-fluid text-center fs-4 lh-1 pt-2 row justify-content-center"
+                    style="color:#035B71;">
+                    <h3 class="header">RUANGAN MEETING PLN NUSANTARA POWER</h3>
+                    <h3 class="header">UNIT PEMBANGKITAN MUARA KARANG</h3>
                 </div>
             </nav>
 
-            <!-- As a heading -->
-            <nav class="navbar">
-                <div class="container-fluid text-center fs-4 lh-1 row justify-content-center" style="color:#035B71;">
-                    <h4>RUANGAN MEETING PLN NUSANTARA POWER</h4>
-                    <h4>UNIT PEMBANGKITAN MUARA KARANG</h4>
-                </div>
-            </nav>
-
-            <p class="date">last update : Rabu, 14/01/2022 14:52</p>
-
-            <div class="container-fluid">
-                <hr>
-                <div class="row">
-                    <div class="col-md-3 col">
-                        <img src="./images/Ellipse 5.png" alt="" srcset=""
-                            style="background-color: #00AFF0; padding: 15px; border-radius: 15px;">
-                    </div>
-                    <div class="col-md-9 col">
-                        <h4>PENERAPAN REMOTISASI PEMBANGKIT</h4>
-                        <div class="row">
-                            <div class="col-md-12 col">
-                                <p><img src="./images/icon-user.png" alt=""> Jumlah peserta : 40</p>
-                                <p><img src="./images/icon-calendar.png" alt=""> 14 Januari 2023</p>
-                                <p><img src="./images/icon-clock.png" alt=""> 09.34 - 10.34</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-md-3 col">
-                        <img src="./images/Ellipse 7.png" alt="" srcset=""
-                            style="background-color: #00AFF0; padding: 15px; border-radius: 15px;">
-                    </div>
-                    <div class="col-md-9 col">
-                        <h4>TRAINING CHANGE LEADERSHIP</h4>
-                        <div class="row">
-                            <div class="col-md-12 col">
-                                <p><img src="./images/icon-user.png" alt=""> Jumlah peserta : 15</p>
-                                <p><img src="./images/icon-calendar.png" alt=""> 14 Januari 2023</p>
-                                <p><img src="./images/icon-clock.png" alt=""> 09.34 - 10.34</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-md-3 col">
-                        <img src="./images/Ellipse 9.png" alt="" srcset=""
-                            style="background-color: #00AFF0; padding: 15px; border-radius: 15px;">
-                    </div>
-                    <div class="col-md-9 col">
-                        <h4>MEETING WEEKLY</h4>
-                        <div class="row">
-                            <div class="col-md-12 col">
-                                <p><img src="./images/icon-user.png" alt=""> Jumlah peserta : 25</p>
-                                <p><img src="./images/icon-calendar.png" alt=""> 14 Januari 2023</p>
-                                <p><img src="./images/icon-clock.png" alt=""> 09.34 - 10.34</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-md-3 col">
-                        <img src="./images/Ellipse 11.png" alt="" srcset=""
-                            style="background-color: #00AFF0; padding: 15px; border-radius: 15px;">
-                    </div>
-                    <div class="col-md-9 col">
-                        <h4>MEETING MONTHLY</h4>
-                        <div class="row">
-                            <div class="col-md-12 col">
-                                <p><img src="./images/icon-user.png" alt=""> Jumlah peserta : 50</p>
-                                <p><img src="./images/icon-calendar.png" alt=""> 14 Januari 2023</p>
-                                <p><img src="./images/icon-clock.png" alt=""> 09.34 - 10.34</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+            <!-- last update -->
+            <div class="date d-flex justify-content-end pe-3" style="color:#035B71;">
+                <p>Last update:</p>
+                <div id="current-time"></div>
             </div>
             <hr>
-        </div>
 
-    </div>
-    <div class="footer">
-        <h6>SELAMAT DATANG DI PT. PLN NUSANTARA POWER UNIT PEMBANGKITAN MUARA KARANG</h6>
-    </div>
+            <script>
+                var days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+
+                function updateTime() {
+                    var now = new Date();
+                    var day = days[now.getDay()];
+                    var hours = now.getHours();
+                    var minutes = now.getMinutes();
+                    var month = now.getMonth() + 1;
+                    var date = now.getDate();
+                    var year = now.getFullYear();
+                    var dateString = " " + day + ", " + date + "/" + month + "/" + year + " " + hours + ":" + minutes;
+                    document.getElementById("current-time").innerHTML = dateString;
+                }
+                setInterval(updateTime, 1000);
+            </script>
+
+            <!-- column -->
+            <div class="container">
+                <div class="row gap-5 text-white justify-content-center column">
+                    <div class="left col-3 rounded-4 bg-white p-3">
+                        <div class="text-left rounded-4 mx-auto text-center p-2" style="background-color: #00AFF0;">
+                            <img src="./images/Ellipse 5.png" alt="" class="img-fluid rounded-4">
+                            <p class="pt-2">Ruang Generator Lt.4</p>
+                        </div>
+                    </div>
+
+                    <div class="right row gap-2 col-8 bg-white rounded-4 p-3">
+                        <div class="">
+                            <h4 class="rounded-4 text-center py-2 title" style="background-color: #00AFF0;">
+                                PENERAPAN
+                                REMOTISASI
+                                PEMBANGKIT</h4>
+                        </div>
+                        <div>
+                            <div class="col rounded-4 p-4 desc" style="background-color: #00AFF0;">
+                                <p class="text"><img src="./images/icon-user.png" alt="icon-user" class="ps-2">Jumlah
+                                    peserta : 40
+                                </p>
+                                <p class="text"><img src="./images/icon-calendar.png" class="ps-2" alt="icon-calendar">
+                                    14 Januari
+                                    2023</p>
+                                <p class="text"><img src="./images/icon-clock.png" class="ps-2" alt="icon-clock"> 09.34
+                                    - 10.34</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row gap-5 text-white justify-content-center column">
+                    <div class="left col-3 rounded-4 bg-white p-3">
+                        <div class="text-left rounded-4 mx-auto text-center p-2" style="background-color: #00AFF0;">
+                            <img src="./images/Ellipse 7.png" alt="" class="img-fluid rounded-4">
+                            <p class="pt-2">Ruang Turbin Lt.4</p>
+                        </div>
+                    </div>
+
+                    <div class="right row gap-2 col-8 bg-white rounded-4 p-3">
+                        <div class="">
+                            <h4 class="rounded-4 text-center py-2 title" style="background-color: #00AFF0;">
+                                TRAINING CHANGE LEADERSHIP</h4>
+                        </div>
+                        <div>
+                            <div class="col rounded-4 p-4 desc" style="background-color: #00AFF0;">
+                                <p class="text"><img src="./images/icon-user.png" alt="icon-user" class="ps-2">Jumlah
+                                    peserta : 15
+                                </p>
+                                <p class="text"><img src="./images/icon-calendar.png" class="ps-2" alt="icon-calendar">
+                                    14 Januari
+                                    2023</p>
+                                <p class="text"><img src="./images/icon-clock.png" class="ps-2" alt="icon-clock"> 09.34
+                                    - 10.34</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row gap-5 text-white justify-content-center column">
+                    <div class="left col-3 rounded-4 bg-white p-3">
+                        <div class="text-left rounded-4 mx-auto text-center p-2" style="background-color: #00AFF0;">
+                            <img src="./images/Ellipse 9.png" alt="" class="img-fluid rounded-4">
+                            <p class="pt-2">Ruang Transformator Lt.4</p>
+                        </div>
+                    </div>
+
+                    <div class="right row gap-2 col-8 bg-white rounded-4 p-3">
+                        <div class="">
+                            <h4 class="rounded-4 text-center py-2 title" style="background-color: #00AFF0;">
+                                MEETING WEEKLY</h4>
+                        </div>
+                        <div>
+                            <div class="col rounded-4 p-4 desc" style="background-color: #00AFF0;">
+                                <p class="text"><img src="./images/icon-user.png" alt="icon-user" class="ps-2">Jumlah
+                                    peserta : 25
+                                </p>
+                                <p class="text"><img src="./images/icon-calendar.png" class="ps-2" alt="icon-calendar">
+                                    16 Januari
+                                    2023</p>
+                                <p class="text"><img src="./images/icon-clock.png" class="ps-2" alt="icon-clock"> 09.34
+                                    - 10.34</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row gap-5 text-white justify-content-center column">
+                    <div class="left col-3 rounded-4 bg-white p-3">
+                        <div class="text-left rounded-4 mx-auto text-center p-2" style="background-color: #00AFF0;">
+                            <img src="./images/Ellipse 5.png" alt="" class="img-fluid rounded-4">
+                            <p class="pt-2">Ruang Boiler Lt.4</p>
+                        </div>
+                    </div>
+
+                    <div class="right row gap-2 col-8 bg-white rounded-4 p-3">
+                        <div class="">
+                            <h4 class="rounded-4 text-center py-2 title" style="background-color: #00AFF0;">
+                                MEETING MONTHLY</h4>
+                        </div>
+                        <div>
+                            <div class="col rounded-4 p-4 desc" style="background-color: #00AFF0;">
+                                <p class="text"><img src="./images/icon-user.png" alt="icon-user" class="ps-2">Jumlah
+                                    peserta : 50
+                                </p>
+                                <p class="text"><img src="./images/icon-calendar.png" class="ps-2" alt="icon-calendar">
+                                    14 Januari
+                                    2023</p>
+                                <p class="text"><img src="./images/icon-clock.png" class="ps-2" alt="icon-clock"> 09.34
+                                    - 10.34</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!-- footer -->
+                <marquee behavior="scroll" direction="left" scrollamount="5" scrolldelay="1" class="py-3 mt-5"
+                    style="background-color: #FFFF00;">SELAMAT
+                    DATANG DI PT. PLN NUSANTARA POWER UNIT PEMBANGKITAN MUARA KARANG</marquee>
 
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+                    crossorigin="anonymous"></script>
 </body>
 
 </html>
